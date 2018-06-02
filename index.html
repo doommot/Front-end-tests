@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>hackMESSENGER</title>
+		<title>CRUD Todo</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="./styles.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
@@ -18,31 +18,49 @@
 					<p class="text-center">CRUD Todo</p>
 					<form>
 						<div class="form-group">
-							<label for="name">NAME</label>
-							<input type="text" class="form-control" id="name">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" v-model="name">
 						</div>
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<textarea class="form-control" id="description" rows="4"></textarea>
+							<textarea v-model="description" class="form-control" id="description" rows="4"></textarea>
 						</div>
 
 						<div class="form-group">
 							<label for="priority">Priority</label>
-							<select id="priority" class="form-control">
+							<select v-model="priority" id="priority" class="form-control">
 								<option value="0">Indifferent</option>
 								<option value="1">Material</option>
 								<option value="2">Tzeench cares</option>
 							</select>
 						</div>
 						<div class="text-center">
-							<button class="btn btn-success">ADD</button>
+							<button v-on:click="create_todo($event)" class="btn btn-success">{{edited_index!==null ? 'ADD' : 'SUBMIT'}}</button>
 						</div>
 					</form>
 				</div>
+				<div class="col-5">
+					<h4>Todo:</h4>
+					<div 
+						v-for="(todo, index) in todos"
+						class="alert"
+						:class="{ 'alert-success': todo.priority === 0,
+						'alert-warning': todo.priority === 1,
+						'alert-info': todo.priority === 2 }">
+						<h5 class="alert-heading">
+							{{todo.name}}
+							<i @click="delete_todo(index)" class="text-danger fa fa-close float-right"></i>
+							<i @click="update_todo(index)" class="text-info fa fa-pencil float-right"></i>
+							<i class="fa fa-check float-right"></i>
+						</h5>
+						<hr>
+						<p>{{todo.description}}</p>
+					</div>
+				</div>
 			</div>
 
-
+			
 		</div>
 		<script src="./node_modules/vue/dist/vue.js"></script>
 		<script src="./script.js"></script>
