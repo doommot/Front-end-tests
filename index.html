@@ -5,19 +5,46 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="./styles.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
+
 	</head>
 
 	<body>
 
-		<div class="messenger">
-			<div class="messages">
-				
-			</div>
+		<div class="container">
+			<div class="row justfy-content-lg-center">
+				<div class="col-4">
+					<p class="text-center">CRUD Todo</p>
+					<form>
+						<div class="form-group">
+							<label for="name">NAME</label>
+							<input type="text" class="form-control" id="name">
+						</div>
 
-			<a href=""></a>
+						<div class="form-group">
+							<label for="description">Description</label>
+							<textarea class="form-control" id="description" rows="4"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label for="priority">Priority</label>
+							<select id="priority" class="form-control">
+								<option value="0">Indifferent</option>
+								<option value="1">Material</option>
+								<option value="2">Tzeench cares</option>
+							</select>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-success">ADD</button>
+						</div>
+					</form>
+				</div>
+			</div>
 
 
 		</div>
+		<script src="./node_modules/vue/dist/vue.js"></script>
 		<script src="./script.js"></script>
 	</body>
 </html>
